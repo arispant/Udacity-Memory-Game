@@ -3,6 +3,10 @@
  */
 let cardList = document.getElementsByClassName('card');
 let cards = [...cardList];
+let deck = document.querySelector('.deck');
+let moves = document.querySelector('.moves');
+let restart = document.querySelector('.restart');
+let openedCards = document.getElementsByClassName('open');
 
 /*
  * Display the cards on the page
@@ -12,8 +16,7 @@ let cards = [...cardList];
  */
 function gameReset(){
   let suffledCards = shuffle(cards);
-  let deck = document.querySelector('.deck');
-  let moves = document.querySelector('.moves');
+
 
   deck.innerHTML = "";
   const fragment = document.createDocumentFragment();
@@ -43,9 +46,10 @@ function shuffle(array) {
     return array;
 }
 
+//call gameReset function onload
 gameReset();
 
-let restart = document.querySelector('.restart');
+
 restart.addEventListener('click', gameReset);
 
 /*
@@ -58,3 +62,13 @@ restart.addEventListener('click', gameReset);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+function displayCards(evt){
+    evt.target.classList.add('open', 'show');
+}
+deck.addEventListener('click', function(){
+  displayCards();
+  
+});
+
+
+console.log(openedCards);
