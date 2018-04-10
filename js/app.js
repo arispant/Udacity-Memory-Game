@@ -10,9 +10,11 @@ let cards = [...cardList];
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-function sufflingTheDeck(){
+function gameReset(){
   let suffledCards = shuffle(cards);
   let deck = document.querySelector('.deck');
+  let moves = document.querySelector('.moves');
+
   deck.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
@@ -23,6 +25,7 @@ function sufflingTheDeck(){
     fragment.appendChild(newElement);
   }
   deck.appendChild(fragment);
+  moves.textContent = 0;
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -40,10 +43,10 @@ function shuffle(array) {
     return array;
 }
 
-sufflingTheDeck();
+gameReset();
 
 let restart = document.querySelector('.restart');
-restart.addEventListener('click', sufflingTheDeck);
+restart.addEventListener('click', gameReset);
 
 /*
  * set up the event listener for a card. If a card is clicked:
