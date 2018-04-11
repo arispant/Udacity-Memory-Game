@@ -5,6 +5,7 @@ let cardList = document.getElementsByClassName('card');
 let cards = [...cardList];
 let deck = document.querySelector('.deck');
 let moves = document.querySelector('.moves');
+let movesCount = 0;
 let restart = document.querySelector('.restart');
 let openedCards = [];
 
@@ -67,9 +68,9 @@ function displayCards(){
 
 function cardOpen() {
     openedCards.push(this);
-    console.log(openedCards);
     let len = openedCards.length;
     if(len === 2){
+        movesCounter();
         if(openedCards[0].innerHTML === openedCards[1].innerHTML){
             cardsMatched();
         } else {
@@ -93,6 +94,11 @@ function cardsUnmatched(){
       openedCards = [];
     },1000);
 
+}
+
+function movesCounter(){
+    movesCount++;
+    moves.innerHTML = movesCount;
 }
 
 for (var i = 0; i < cards.length; i++){
