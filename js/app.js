@@ -6,7 +6,7 @@ let cards = [...cardList];
 let deck = document.querySelector('.deck');
 let moves = document.querySelector('.moves');
 let restart = document.querySelector('.restart');
-let openedCards = document.getElementsByClassName('open');
+let openedCards = [];
 
 /*
  * Display the cards on the page
@@ -15,21 +15,20 @@ let openedCards = document.getElementsByClassName('open');
  *   - add each card's HTML to the page
  */
 function gameReset(){
+  //deck.innerHTML = "";
   let suffledCards = shuffle(cards);
-
-
-  deck.innerHTML = "";
   const fragment = document.createDocumentFragment();
 
   for(let i = 0; i < cards.length; i++){
     let newElement = document.createElement('li');
     newElement = suffledCards[i];
-
+    newElement.className = "card";
     fragment.appendChild(newElement);
   }
   deck.appendChild(fragment);
   moves.textContent = 0;
 }
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -47,7 +46,7 @@ function shuffle(array) {
 }
 
 //call gameReset function onload
-gameReset();
+window.onload = gameReset();
 
 
 restart.addEventListener('click', gameReset);
@@ -65,10 +64,24 @@ restart.addEventListener('click', gameReset);
 function displayCards(evt){
     evt.target.classList.add('open', 'show');
 }
-deck.addEventListener('click', function(){
-  displayCards();
-  
+
+function cardOpen() {
+    openedCards.push(this);
+    let len = openedCards.length;
+    if(len === 2){
+        //moveCounter();
+        if(openedCards[0].innerHTML === openedCards[1].innerHTML){
+            //cardsMatched();
+        } else {
+            //cardsUnmatched();
+        }
+    }
+}
+
+
+
+deck.addEventListener('click', function(evt){
+
+    displayCards(evt);
+
 });
-
-
-console.log(openedCards);
