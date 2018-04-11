@@ -61,27 +61,43 @@ restart.addEventListener('click', gameReset);
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-function displayCards(evt){
-    evt.target.classList.add('open', 'show');
+function displayCards(){
+    this.classList.add('open', 'show');
 }
 
 function cardOpen() {
     openedCards.push(this);
+    console.log(openedCards);
     let len = openedCards.length;
     if(len === 2){
-        //moveCounter();
         if(openedCards[0].innerHTML === openedCards[1].innerHTML){
-            //cardsMatched();
+            cardsMatched();
         } else {
-            //cardsUnmatched();
+            cardsUnmatched();
         }
     }
 }
 
+function cardsMatched(){
+    openedCards[0].classList.add("match");
+    openedCards[1].classList.add("match");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
+    openedCards = [];
+}
 
+function cardsUnmatched(){
+    setTimeout(function(){
+      openedCards[0].className = "card";
+      openedCards[1].className = "card";
+      openedCards = [];
+    },1000);
 
-deck.addEventListener('click', function(evt){
+}
 
-    displayCards(evt);
-
-});
+for (var i = 0; i < cards.length; i++){
+    cardList = cards[i];
+    cardList.addEventListener("click", displayCards);
+    cardList.addEventListener("click", cardOpen);
+    //card.addEventListener("click",congratulations);
+};
