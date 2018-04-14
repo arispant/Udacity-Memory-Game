@@ -3,12 +3,21 @@
  */
 let cardList = document.getElementsByClassName('card');
 let cards = [...cardList];
+
 let deck = document.querySelector('.deck');
 let moves = document.querySelector('.moves');
 let movesCount = 0;
+
 let restart = document.querySelector('.restart');
 let openedCards = [];
 
+let matchedCards = document.getElementsByClassName("match");
+
+let interval;
+let seconds = 0, minutes = 0;
+
+
+var timer = document.querySelector(".timer");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -85,6 +94,10 @@ function cardsMatched(){
     openedCards[0].classList.remove("show", "open");
     openedCards[1].classList.remove("show", "open");
     openedCards = [];
+    if(matchedCards.length == 16){
+      clearInterval(interval);
+    }
+    console.log(matchedCards);
 }
 
 function cardsUnmatched(){
@@ -96,9 +109,23 @@ function cardsUnmatched(){
 
 }
 
+function gameTimer(){
+  interval = setInterval(function () {
+    timer.innerHTML = minutes + "mins " + seconds + "secs";
+    seconds++;
+    if(seconds == 60){
+      minutes++;
+      seconds = 0;
+    }
+  }, 1000);
+}
+
 function movesCounter(){
     movesCount++;
     moves.innerHTML = movesCount;
+    if(movesCount == 1){
+      gameTimer();
+    }
 }
 
 for (var i = 0; i < cards.length; i++){
