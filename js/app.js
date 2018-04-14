@@ -25,7 +25,11 @@ var timer = document.querySelector(".timer");
  *   - add each card's HTML to the page
  */
 function gameReset(){
-  //deck.innerHTML = "";
+  clearInterval(interval);
+  seconds = 0;
+  mins = 0;
+  timer.innerHTML = minutes + " mins " + seconds + " secs";
+
   let suffledCards = shuffle(cards);
   const fragment = document.createDocumentFragment();
 
@@ -35,8 +39,8 @@ function gameReset(){
     newElement.className = "card";
     fragment.appendChild(newElement);
   }
-  deck.appendChild(fragment);
-  moves.textContent = 0;
+   deck.appendChild(fragment);
+   moves.textContent = 0;
 }
 
 
@@ -97,7 +101,6 @@ function cardsMatched(){
     if(matchedCards.length == 16){
       clearInterval(interval);
     }
-    console.log(matchedCards);
 }
 
 function cardsUnmatched(){
