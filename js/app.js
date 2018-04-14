@@ -18,7 +18,13 @@ let seconds = 0, minutes = 0;
 
 let timer = document.querySelector(".timer");
 
-let stars = document.getElementsByClassName("fa-star");;
+let starsUl = document.querySelector(".stars");
+let stars = document.getElementsByClassName("fa-star");
+
+let totalTime = document.querySelector(".totalTime");
+let totalMoves = document.querySelector(".totalMoves");
+let starRating = document.querySelector(".starRating");
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -108,6 +114,7 @@ function cardsMatched(){
     openedCards = [];
     if(matchedCards.length == 16){
       clearInterval(interval);
+      congratulations();
     }
 }
 
@@ -118,23 +125,26 @@ function cardsUnmatched(){
       openedCards[1].className = "card";
       openedCards = [];
       enableCards();
-    },800);
+    },700);
 
 }
 
 function disableCards(){
+    // run filter function on cards array to remove disable class to each element
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
     });
 }
 
 function enableCards() {
+    // run filter function on cards array to set disable class to each element
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
   });
 }
 
 function gameTimer(){
+  //set timer
   interval = setInterval(function () {
     timer.innerHTML = minutes + "mins " + seconds + "secs";
     seconds++;
@@ -169,9 +179,14 @@ function movesCounter(){
     }
 }
 
+function congratulations(){
+    totalTime.innerHTML = timer.innerHTML;
+    totalMoves.innerHTML = moves.innerHTML;
+    starRating.innerHTML = starsUl.innerHTML;
+}
+
 for (var i = 0; i < cards.length; i++){
     cardList = cards[i];
     cardList.addEventListener("click", displayCards);
     cardList.addEventListener("click", cardOpen);
-    //card.addEventListener("click",congratulations);
 };
