@@ -4,11 +4,11 @@
 let cardList = document.getElementsByClassName('card');
 let cards = [...cardList];
 
-let deck = document.querySelector('.deck');
-let moves = document.querySelector('.moves');
+let deck = document.querySelector(".deck");
+let moves = document.querySelector(".moves");
 let movesCount = 0;
 
-let restart = document.querySelector('.restart');
+let restart = document.querySelector(".restart");
 let openedCards = [];
 
 let matchedCards = document.getElementsByClassName("match");
@@ -16,8 +16,9 @@ let matchedCards = document.getElementsByClassName("match");
 let interval;
 let seconds = 0, minutes = 0;
 
+let timer = document.querySelector(".timer");
 
-var timer = document.querySelector(".timer");
+let stars = document.getElementsByClassName("fa-star");;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -25,10 +26,17 @@ var timer = document.querySelector(".timer");
  *   - add each card's HTML to the page
  */
 function gameReset(){
+
   clearInterval(interval);
   seconds = 0;
   minutes = 0;
+  movesCount = 0;
   timer.innerHTML = minutes + " mins " + seconds + " secs";
+
+  // reset rating
+  for (var i = 0; i < stars.length; i++){
+      stars[i].style.color = "#fff466";
+  }
 
   let suffledCards = shuffle(cards);
   const fragment = document.createDocumentFragment();
@@ -121,8 +129,8 @@ function disableCards(){
 }
 
 function enableCards() {
-  Array.prototype.filter.call(cards, function(card){
-      card.classList.remove('disabled');
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.remove('disabled');
   });
 }
 
@@ -142,6 +150,22 @@ function movesCounter(){
     moves.innerHTML = movesCount;
     if(movesCount == 1){
       gameTimer();
+    }
+
+    if(movesCount >= 12 && movesCount <= 16){
+      for(let i = 0; i < 3; i++){
+        if(i == 2){
+          stars[i].style.color = "#4f5051";
+        }
+      }
+    }
+
+    if(movesCount > 16){
+      for(let i = 0; i < 3; i++){
+        if(i == 1){
+          stars[i].style.color = "#4f5051";
+        }
+      }
     }
 }
 
