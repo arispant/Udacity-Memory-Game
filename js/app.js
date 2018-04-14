@@ -27,7 +27,7 @@ var timer = document.querySelector(".timer");
 function gameReset(){
   clearInterval(interval);
   seconds = 0;
-  mins = 0;
+  minutes = 0;
   timer.innerHTML = minutes + " mins " + seconds + " secs";
 
   let suffledCards = shuffle(cards);
@@ -104,12 +104,26 @@ function cardsMatched(){
 }
 
 function cardsUnmatched(){
+    disableCards();
     setTimeout(function(){
       openedCards[0].className = "card";
       openedCards[1].className = "card";
       openedCards = [];
-    },1000);
+      enableCards();
+    },800);
 
+}
+
+function disableCards(){
+    Array.prototype.filter.call(cards, function(card){
+        card.classList.add('disabled');
+    });
+}
+
+function enableCards() {
+  Array.prototype.filter.call(cards, function(card){
+      card.classList.remove('disabled');
+  });
 }
 
 function gameTimer(){
