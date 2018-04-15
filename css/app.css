@@ -111,3 +111,45 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the Congratulations message
+ */
+.congrats {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	transition: opacity 600ms;
+	visibility: hidden;
+
+}
+
+.congrats-content {
+	margin: 70px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 85%;
+	position: relative;
+	transition: all 5s ease-in-out;
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+#play-again {
+	background-color: #141214;
+	padding: 0.7rem 1rem;
+	font-size: 1.1rem;
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+	color: #ffffff;
+	border-radius: 3px;
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}

@@ -26,6 +26,9 @@ let totalTime = document.querySelector(".totalTime");
 let totalMoves = document.querySelector(".totalMoves");
 let starRating = document.querySelector(".starRating");
 
+// declare modal
+ let modal = document.querySelector(".congrats");
+ let againButton = document.getElementById("play-again");
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -162,7 +165,7 @@ function movesCounter(){
     if(movesCount == 1){
       gameTimer();
     }
-
+    rate = 3;
     if(movesCount >= 12 && movesCount <= 16){
       for(let i = 0; i < 3; i++){
         if(i == 2){
@@ -187,9 +190,19 @@ function congratulations(){
     totalMoves.innerHTML = moves.innerHTML;
     if(rate == 1){
         starRating.innerHTML = rate +" star!!!";
+    }else {
+        starRating.innerHTML = rate +" stars!!!";
     }
-    starRating.innerHTML = rate +" stars!!!";
+
+    modal.classList.add("show");
+
+    againButton.addEventListener("click", function(){
+        modal.classList.remove("show");
+        gameReset();
+    });
+
 }
+
 
 for (var i = 0; i < cards.length; i++){
     cardList = cards[i];
