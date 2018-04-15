@@ -20,6 +20,7 @@ let timer = document.querySelector(".timer");
 
 let starsUl = document.querySelector(".stars");
 let stars = document.getElementsByClassName("fa-star");
+let rate = 0;
 
 let totalTime = document.querySelector(".totalTime");
 let totalMoves = document.querySelector(".totalMoves");
@@ -166,6 +167,7 @@ function movesCounter(){
       for(let i = 0; i < 3; i++){
         if(i == 2){
           stars[i].style.color = "#4f5051";
+          rate = 2;
         }
       }
     }
@@ -174,6 +176,7 @@ function movesCounter(){
       for(let i = 0; i < 3; i++){
         if(i == 1){
           stars[i].style.color = "#4f5051";
+          rate = 1;
         }
       }
     }
@@ -182,7 +185,10 @@ function movesCounter(){
 function congratulations(){
     totalTime.innerHTML = timer.innerHTML;
     totalMoves.innerHTML = moves.innerHTML;
-    starRating.innerHTML = starsUl.innerHTML;
+    if(rate == 1){
+        starRating.innerHTML = rate +" star!!!";
+    }
+    starRating.innerHTML = rate +" stars!!!";
 }
 
 for (var i = 0; i < cards.length; i++){
