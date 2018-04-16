@@ -20,5 +20,5 @@ Try to find the pairs in less time and less moves!!!
 * When the player finds all the pairs a modal is displayed
 
 ## Want to play? Click the link!
-[Play!](#instructions)
+[Play!](https://arispant.github.io/Udacity-Memory-Game/)
 
