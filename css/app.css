@@ -128,25 +128,29 @@ h1 {
 }
 
 .congrats-content {
-	margin: 70px auto;
-	padding: 20px;
-	background: #ffffff;
+	margin: 60px auto;
+	padding: 15px;
+	background: #efefef;
 	border-radius: 5px;
-	width: 85%;
+	width: 75%;
 	position: relative;
-	transition: all 5s ease-in-out;
-	font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+  font-family: 'Handlee', cursive;
+}
+
+.congrats-content p {
+  font-size: 1.4em;
 }
 
 #play-again {
-	background-color: #141214;
-	padding: 0.7rem 1rem;
-	font-size: 1.1rem;
+	background-color: #adafb2;
+  margin: 0 auto;
+	padding: 10px;
+	font-size: 1.2em;
 	display: block;
-	margin: 0 auto;
-	width: 50%;
-	color: #ffffff;
-	border-radius: 3px;
+	width: 35%;
+	color: #4c4c4c;
+	border-radius: 4px;
 }
 
 .show {

@@ -186,12 +186,15 @@ function movesCounter(){
 }
 
 function congratulations(){
-    totalTime.innerHTML = timer.innerHTML;
+    totalTime.innerHTML = minutes + " minutes and " + seconds + " seconds";
     totalMoves.innerHTML = moves.innerHTML;
     if(rate == 1){
-        starRating.innerHTML = rate +" star!!!";
-    }else {
-        starRating.innerHTML = rate +" stars!!!";
+        starRating.innerHTML = rate +" star!!! Good job!";
+    }else if(rate == 2){
+        starRating.innerHTML = rate +" stars!!! Great Job!";
+    }
+    else{
+        starRating.innerHTML = rate +" stars!!! Awesome!!!";
     }
 
     modal.classList.add("show");
