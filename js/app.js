@@ -1,43 +1,48 @@
-/*
- * Create a list that holds all of your cards
- */
+
+// deck of all cards
+let deck = document.querySelector(".deck");
+
+// selecting cards and create cards array to hold all cards
 let cardList = document.getElementsByClassName('card');
 let cards = [...cardList];
 
-let deck = document.querySelector(".deck");
+// declare variables for game moves
 let moves = document.querySelector(".moves");
 let movesCount = 0;
 
+// select restart button
 let restart = document.querySelector(".restart");
+
+// an array to store opened cards
 let openedCards = [];
 
+// select match cards
 let matchedCards = document.getElementsByClassName("match");
 
+// declaring variables for timer functionality
 let interval;
 let seconds = 0, minutes = 0;
-
 let timer = document.querySelector(".timer");
 
+// declare variables for rating functionality
 let starsUl = document.querySelector(".stars");
 let stars = document.getElementsByClassName("fa-star");
 let rate = 0;
 
-let totalTime = document.querySelector(".totalTime");
-let totalMoves = document.querySelector(".totalMoves");
-let starRating = document.querySelector(".starRating");
-
 // declare modal
  let modal = document.querySelector(".congrats");
  let againButton = document.getElementById("play-again");
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+ let totalTime = document.querySelector(".totalTime");
+ let totalMoves = document.querySelector(".totalMoves");
+ let starRating = document.querySelector(".starRating");
+
+ // function for reseting game
 function gameReset(){
 
+  // stop timer
   clearInterval(interval);
+
+  //reseting time variables
   seconds = 0;
   minutes = 0;
   movesCount = 0;
@@ -48,9 +53,11 @@ function gameReset(){
       stars[i].style.color = "#fff466";
   }
 
+  // suffle the deck
   let suffledCards = shuffle(cards);
   const fragment = document.createDocumentFragment();
 
+  // display suffled cards
   for(let i = 0; i < cards.length; i++){
     let newElement = document.createElement('li');
     newElement = suffledCards[i];
@@ -80,23 +87,15 @@ function shuffle(array) {
 //call gameReset function onload
 window.onload = gameReset();
 
-
+// add event listener for reset button
 restart.addEventListener('click', gameReset);
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+// function to show clicked cards
 function displayCards(){
     this.classList.add('open', 'show');
 }
 
+// function to hadle functionality for the pair of cards
 function cardOpen() {
     openedCards.push(this);
     let len = openedCards.length;
@@ -110,6 +109,7 @@ function cardOpen() {
     }
 }
 
+// function to hadle a matched pair
 function cardsMatched(){
     openedCards[0].classList.add("match");
     openedCards[1].classList.add("match");
@@ -117,77 +117,84 @@ function cardsMatched(){
     openedCards[1].classList.remove("show", "open");
     openedCards = [];
     if(matchedCards.length == 16){
-      clearInterval(interval);
-      congratulations();
+        clearInterval(interval);
+        congratulations();
     }
 }
 
+// function to handle an unmatched pair
 function cardsUnmatched(){
     disableCards();
+    // setting the duration that the two cards are open
     setTimeout(function(){
-      openedCards[0].className = "card";
-      openedCards[1].className = "card";
-      openedCards = [];
-      enableCards();
+        openedCards[0].className = "card";
+        openedCards[1].className = "card";
+        openedCards = [];
+        enableCards();
     },700);
-
 }
 
+// function for temporary disable click
 function disableCards(){
-    // run filter function on cards array to remove disable class to each element
+    // run filter function on cards array to add disable class to each element so they're not clickable
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
     });
 }
 
+// function to enable click functionality again
 function enableCards() {
-    // run filter function on cards array to set disable class to each element
+    // run filter function on cards array to remove disable class to each element
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
   });
 }
 
+// function to start timer for the game
 function gameTimer(){
   //set timer
-  interval = setInterval(function () {
-    timer.innerHTML = minutes + "mins " + seconds + "secs";
-    seconds++;
-    if(seconds == 60){
-      minutes++;
-      seconds = 0;
+    interval = setInterval(function () {
+        timer.innerHTML = minutes + "mins " + seconds + "secs";
+        seconds++;
+        if(seconds == 60){
+            minutes++;
+            seconds = 0;
     }
   }, 1000);
 }
 
+// function to count game moves
 function movesCounter(){
     movesCount++;
     moves.innerHTML = movesCount;
     if(movesCount == 1){
-      gameTimer();
+        gameTimer();
     }
     rate = 3;
     if(movesCount >= 12 && movesCount <= 16){
-      for(let i = 0; i < 3; i++){
-        if(i == 2){
-          stars[i].style.color = "#4f5051";
-          rate = 2;
+        for(let i = 0; i < 3; i++){
+            if(i == 2){
+                stars[i].style.color = "#4f5051";
+                rate = 2;
+            }
         }
-      }
     }
 
     if(movesCount > 16){
-      for(let i = 0; i < 3; i++){
-        if(i == 1){
-          stars[i].style.color = "#4f5051";
-          rate = 1;
+        for(let i = 0; i < 3; i++){
+            if(i == 1){
+                stars[i].style.color = "#4f5051";
+                rate = 1;
+            }
         }
-      }
     }
 }
 
+// function to handle congratulations modal
 function congratulations(){
     totalTime.innerHTML = minutes + " minutes and " + seconds + " seconds";
     totalMoves.innerHTML = moves.innerHTML;
+
     if(rate == 1){
         starRating.innerHTML = rate +" star!!! Good job!";
     }else if(rate == 2){
@@ -203,10 +210,9 @@ function congratulations(){
         modal.classList.remove("show");
         gameReset();
     });
-
 }
 
-
+// adding event listeners
 for (var i = 0; i < cards.length; i++){
     cardList = cards[i];
     cardList.addEventListener("click", displayCards);
