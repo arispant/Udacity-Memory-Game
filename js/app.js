@@ -116,6 +116,8 @@ function cardsMatched(){
     openedCards[0].classList.remove("show", "open");
     openedCards[1].classList.remove("show", "open");
     openedCards = [];
+
+    //checks if all cards are open
     if(matchedCards.length == 16){
         clearInterval(interval);
         congratulations();
@@ -167,10 +169,12 @@ function gameTimer(){
 function movesCounter(){
     movesCount++;
     moves.innerHTML = movesCount;
+
     if(movesCount == 1){
         gameTimer();
     }
     rate = 3;
+
     if(movesCount >= 12 && movesCount <= 16){
         for(let i = 0; i < 3; i++){
             if(i == 2){

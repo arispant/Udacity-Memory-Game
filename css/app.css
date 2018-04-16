@@ -26,6 +26,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    font-family: 'Gaegu', cursive;
+    font-size: 1.4em;
 }
 
 h1 {
@@ -66,7 +68,7 @@ h1 {
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY();
     background: #02b3e4;
     cursor: default;
 }
