@@ -1,0 +1,63 @@
+/****** Media queries
+***************************/
+
+
+@media screen and (max-width: 340px) {
+  .container h1 {
+    font-size: 25px;
+  }
+
+  .fa-star {
+    font-size: 15px;
+
+  }
+  .score-panel {
+		font-size: 15px;
+	}
+
+  .score-panel .restart {
+      font-size: 13px;
+  }
+
+  .deck {
+    width: 90%;
+    height: 90%;
+	}
+
+  .deck .card {
+    height: 60px;
+		width: 60px;
+	}
+
+  .congrats {
+		width: 60%;
+	}
+}
+
+
+/* For Tablets and larger screens
+****************/
+
+@media screen and (min-width: 341px) and (max-width:760px) {
+	.container {
+		font-size: 20px;
+	}
+
+	.deck {
+		width: 90%;
+		height: 90%;
+	}
+
+	.deck .card {
+    height: 80px;
+    width: 80px;
+	}
+
+  .score-panel {
+    font-size: 25px;
+  }
+
+	.congrats {
+		width: 70%;
+	}
+}
