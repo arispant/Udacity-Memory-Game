@@ -3,7 +3,7 @@
 let deck = document.querySelector(".deck");
 
 // selecting cards and create cards array to hold all cards
-let cardList = document.getElementsByClassName('card');
+let cardList = document.getElementsByClassName("card");
 let cards = [...cardList];
 
 // declare variables for game moves
@@ -140,7 +140,7 @@ function cardsUnmatched(){
 function disableCards(){
     // run filter function on cards array to add disable class to each element so they're not clickable
     Array.prototype.filter.call(cards, function(card){
-        card.classList.add('disabled');
+        card.classList.add("disabled");
     });
 }
 
@@ -148,7 +148,7 @@ function disableCards(){
 function enableCards() {
     // run filter function on cards array to remove disable class to each element
     Array.prototype.filter.call(cards, function(card){
-        card.classList.remove('disabled');
+        card.classList.remove("disabled");
   });
 }
 
@@ -165,7 +165,7 @@ function gameTimer(){
   }, 1000);
 }
 
-// function to count game moves
+// function to count game moves and set players rating
 function movesCounter(){
     movesCount++;
     moves.innerHTML = movesCount;
@@ -175,6 +175,7 @@ function movesCounter(){
     }
     rate = 3;
 
+    // set rating
     if(movesCount >= 12 && movesCount <= 16){
         for(let i = 0; i < 3; i++){
             if(i == 2){
