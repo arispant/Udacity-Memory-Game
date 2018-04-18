@@ -88,16 +88,17 @@ function shuffle(array) {
 window.onload = gameReset();
 
 // add event listener for reset button
-restart.addEventListener('click', gameReset);
+restart.addEventListener("click", gameReset);
 
 // function to show clicked cards
 function displayCards(){
-    this.classList.add('open', 'show');
+    this.classList.add("open", "show");
 }
 
 // function to hadle functionality for the pair of cards
 function cardOpen() {
     openedCards.push(this);
+    this.classList.add("disabled");
     let len = openedCards.length;
     if(len === 2){
         movesCounter();
@@ -117,7 +118,7 @@ function cardsMatched(){
       openedCards[0].classList.remove("show", "open");
       openedCards[1].classList.remove("show", "open");
       openedCards = [];
-    
+
 
     //checks if all cards are open
     if(matchedCards.length == 16){
