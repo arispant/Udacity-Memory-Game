@@ -112,13 +112,11 @@ function cardOpen() {
 
 // function to hadle a matched pair
 function cardsMatched(){
-
-      openedCards[0].classList.add("match");
-      openedCards[1].classList.add("match");
-      openedCards[0].classList.remove("show", "open");
-      openedCards[1].classList.remove("show", "open");
-      openedCards = [];
-
+    openedCards[0].classList.add("match");
+    openedCards[1].classList.add("match");
+    openedCards[0].classList.remove("show", "open");
+    openedCards[1].classList.remove("show", "open");
+    openedCards = [];
 
     //checks if all cards are open
     if(matchedCards.length == 16){
