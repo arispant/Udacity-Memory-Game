@@ -59,10 +59,10 @@ function gameReset(){
 
   // display suffled cards
   for(let i = 0; i < cards.length; i++){
-    let newElement = document.createElement('li');
-    newElement = suffledCards[i];
-    newElement.className = "card";
-    fragment.appendChild(newElement);
+      let newElement = document.createElement('li');
+      newElement = suffledCards[i];
+      newElement.className = "card";
+      fragment.appendChild(newElement);
   }
    deck.appendChild(fragment);
    moves.textContent = 0;
@@ -111,11 +111,13 @@ function cardOpen() {
 
 // function to hadle a matched pair
 function cardsMatched(){
-    openedCards[0].classList.add("match");
-    openedCards[1].classList.add("match");
-    openedCards[0].classList.remove("show", "open");
-    openedCards[1].classList.remove("show", "open");
-    openedCards = [];
+
+      openedCards[0].classList.add("match");
+      openedCards[1].classList.add("match");
+      openedCards[0].classList.remove("show", "open");
+      openedCards[1].classList.remove("show", "open");
+      openedCards = [];
+    
 
     //checks if all cards are open
     if(matchedCards.length == 16){
@@ -127,13 +129,18 @@ function cardsMatched(){
 // function to handle an unmatched pair
 function cardsUnmatched(){
     disableCards();
+    setTimeout(function(){
+        openedCards[0].classList.add("unmatch");
+        openedCards[1].classList.add("unmatch");
+    },400);
+
     // setting the duration that the two cards are open
     setTimeout(function(){
         openedCards[0].className = "card";
         openedCards[1].className = "card";
         openedCards = [];
         enableCards();
-    },700);
+    },1000);
 }
 
 // function for temporary disable click
