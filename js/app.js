@@ -38,7 +38,10 @@ let rate = 0;
 
  // function for reseting game
 function gameReset(){
-
+  
+  // remove array's elements
+  openedCards = [];
+ 
   // stop timer
   clearInterval(interval);
 
