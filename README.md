@@ -19,6 +19,6 @@ Try to find the pairs in less time and less moves!!!
 * During the game time, moves and rating are stored in variables
 * When the player finds all the pairs a modal is displayed
 
-## Want to play? Click the link!
+## Want to play? No installation needed,No depedencies!!! Just click the link!!!
 [Play!](https://arispant.github.io/Udacity-Memory-Game/)
 
