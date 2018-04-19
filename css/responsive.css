@@ -3,30 +3,30 @@
 
 
 @media screen and (max-width: 340px) {
-  .container h1 {
-      	font-size: 25px;
-  }
+	  .container h1 {
+		font-size: 25px;
+	  }
 
-  .fa-star {
-      	font-size: 15px;
-  }
-  .score-panel {
-	font-size: 15px;
-  }
+	  .fa-star {
+		font-size: 15px;
+	  }
+	  .score-panel {
+		font-size: 15px;
+	  }
 
-  .score-panel .restart {
-     	font-size: 13px;
-  }
+	  .score-panel .restart {
+		font-size: 13px;
+	  }
 
-  .deck {
-	width: 90%;
-	height: 90%;
-  }
+	  .deck {
+		width: 90%;
+		height: 90%;
+	  }
 
-  .deck .card {
-      	height: 60px;
-  	width: 60px;
-  }
+	  .deck .card {
+		height: 60px;
+		width: 60px;
+	  }
 }
 
 
