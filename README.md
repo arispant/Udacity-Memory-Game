@@ -16,11 +16,7 @@ Try to find the pairs in less time and less moves!!!
 
 ## How the game was built.
 
-During the development proccess i used Vanilla JS to manipulate the DOM, CSS for styling, responsiveness and animation for matched and unmatched cards. Also HTML to set game's elements.
-
-* The game begins with a deck suffling
-* During the game time, moves and rating are stored in variables to help us provide info.
-* When the player finds all the pairs a modal is displayed giving info about player's scores.
+During the development proccess i used Vanilla JS with object-oriented programming to create Player class and handle all the game's functionality(properties and methods) and manipulate the DOM. HTML to set game's elements.
 
 ## Installation.
 
@@ -29,5 +25,5 @@ No installation needed!
 ## How to play.
 
 Just click the link and you are ready to go!!!
-[Play!](https://arispant.github.io/Udacity-Memory-Game/)
+[Play!](https://arispant.github.io/simple-arcade-game/)
 
