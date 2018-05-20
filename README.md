@@ -16,7 +16,7 @@ Try to find the pairs in less time and less moves!!!
 
 ## How the game was built.
 
-During the development proccess i used Vanilla JS with object-oriented programming to create Player class and handle all the game's functionality(properties and methods) and manipulate the DOM. HTML to set game's elements.
+During the development proccess i used Vanilla JS to manipulate the DOM. CSS for styles and also HTML to set game's elements.
 
 ## Installation.
 
@@ -25,5 +25,5 @@ No installation needed!
 ## How to play.
 
 Just click the link and you are ready to go!!!
-[Play!](https://arispant.github.io/simple-arcade-game/)
+[Play!](https://arispant.github.io/Udacity-Memory-Game/)
 
